@@ -87,6 +87,25 @@ int main()
         assert(true, "Inserting a root when a root already exists should throw an exception.");
     }
 
+    //DevOps extra tests for 10 total
+    tree.reset();
+    assert(tree.getRoot() == nullptr, "Test 8 Failed: Tree should be empty after reset");
+
+    RiverNode *tributary = new RiverNode();
+    tributary->name = "Tributary";
+    tributary->length = 50;
+    tree.insert(lake, tributary, true);  // Insert as left child of lake
+    assert(lake->left == tributary, "Test 9 Failed: Lake's left child should be tributary");
+
+    RiverNode *orphanRiver = new RiverNode();
+    orphanRiver->name = "Orphan";
+    orphanRiver->length = 75;
+    try {
+        tree.insert(orphanRiver, tributary, true);  // orphanRiver is not in the tree
+        assert(false, "Test 10 Failed: Should throw when parent is not in tree");
+    } catch (const std::invalid_argument &e) {}
+    //DevOps extra tests for 10 total
+
     // Tree printing tests
 
     std::ostringstream output;
