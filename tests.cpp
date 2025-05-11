@@ -110,7 +110,7 @@ int main()
     // Tree printing tests
 
     std::ostringstream output;
-    std::string expected = "Foo River (100 km) \nBaz Dam (50 m, 0 MW) Bar Lake (200 km^2) \n\n";
+    std::string expected = "Foo River (100 km) \nBaz Dam (50 m, 0 MW) Bar Lake (200 km^2) \nTest Lake 2 (300 km^2) Test River 2 (200 km) Test Dam 2 (60 m, 0 MW)\n\n";
 
     tree.print(output);
 
