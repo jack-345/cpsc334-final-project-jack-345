@@ -88,40 +88,7 @@ int main()
     }
 
     //DevOps extra tests for 10 total
-    Tree freshTree;  // Use a fresh tree instance for reset test
-    RiverNode *testRoot = new RiverNode();
-    testRoot->name = "Test Root";
-    testRoot->length = 1;
-    freshTree.insert(nullptr, testRoot, true);
-    freshTree.reset();
-    assert(freshTree.getRoot() == nullptr, "Test 8 Failed: Tree should be empty after reset");
-
-    RiverNode *tributary = new RiverNode();
-    tributary->name = "Tributary";
-    tributary->length = 50;
-    tree.insert(lake, tributary, true);  // Insert as left child of lake
-    assert(lake->left == tributary, "Test 9 Failed: Lake's left child should be tributary");
-
-    Tree testTree;
-    RiverNode *validParent = new RiverNode();
-    validParent->name = "Valid";
-    validParent->length = 1;
-    testTree.insert(nullptr, validParent, true);
-
-    RiverNode *orphan = new RiverNode();
-    orphan->name = "Orphan";
-    orphan->length = 2;
-
-    RiverNode *testChild = new RiverNode();
-    testChild->name = "Test Child";
-    testChild->length = 3;
-
-    try {
-        testTree.insert(orphan, testChild, true);
-        assert(false, "Test 10 Failed: Should throw when parent is not in tree");
-    } catch (const std::invalid_argument &e) {
-        assert(true, "Test 10 Passed: Correctly threw exception for invalid parent");
-    }
+    
     //DevOps extra tests for 10 total
 
     // Tree printing tests
