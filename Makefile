@@ -1,5 +1,4 @@
 build:
-	make clean
 	g++ main.cpp rivers.cpp -o rivers
 
 run:
