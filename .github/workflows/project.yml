@@ -45,8 +45,8 @@ jobs:
             - name: checkout code
               uses: actions/checkout@v4
 
-            - name: pack
-              run: make pack
+            - name: build/pack script
+              run: make package
 
             - name: upload artifact
               uses: actions/upload-artifact@v4

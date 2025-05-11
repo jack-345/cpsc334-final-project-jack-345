@@ -10,3 +10,6 @@ test:
 
 pack:
 	dpkg-deb --build river-pkg river-pkg.deb
+
+package: 
+	./build_deb.sh
