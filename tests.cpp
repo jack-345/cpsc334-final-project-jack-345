@@ -100,8 +100,6 @@ int main()
 
     assert(output.str() == expected, "Tree print did not match expected output.");
 
-    test_tree_print();
-
     std::cout << "All tests passed." << std::endl;
 
     return 0;
