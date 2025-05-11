@@ -102,13 +102,26 @@ int main()
     tree.insert(lake, tributary, true);  // Insert as left child of lake
     assert(lake->left == tributary, "Test 9 Failed: Lake's left child should be tributary");
 
-    RiverNode *orphanRiver = new RiverNode();
-    orphanRiver->name = "Orphan";
-    orphanRiver->length = 75;
+    Tree testTree;
+    RiverNode *validParent = new RiverNode();
+    validParent->name = "Valid";
+    validParent->length = 1;
+    testTree.insert(nullptr, validParent, true);
+
+    RiverNode *orphan = new RiverNode();
+    orphan->name = "Orphan";
+    orphan->length = 2;
+
+    RiverNode *testChild = new RiverNode();
+    testChild->name = "Test Child";
+    testChild->length = 3;
+
     try {
-        tree.insert(orphanRiver, tributary, true);  // orphanRiver is not in the tree
+        testTree.insert(orphan, testChild, true);
         assert(false, "Test 10 Failed: Should throw when parent is not in tree");
-    } catch (const std::invalid_argument &e) {}
+    } catch (const std::invalid_argument &e) {
+        assert(true, "Test 10 Passed: Correctly threw exception for invalid parent");
+    }
     //DevOps extra tests for 10 total
 
     // Tree printing tests
