@@ -12,4 +12,5 @@ pack:
 	dpkg-deb --build river-pkg river-pkg.deb
 
 package: 
+	chmod +x build_deb.sh
 	./build_deb.sh
