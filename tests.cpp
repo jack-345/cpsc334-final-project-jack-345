@@ -88,7 +88,16 @@ int main()
     }
 
     //DevOps extra tests for 10 total
+    Tree freshTree;  // Use a fresh tree instance
+    RiverNode *tempRoot = new RiverNode();
+    tempRoot->name = "Temp Root";
+    tempRoot->length = 1;
     
+    freshTree.insert(nullptr, tempRoot, true);  // Insert root
+    freshTree.reset();  // Reset tree
+    
+    assert(freshTree.getRoot() == nullptr, "Test 8 Failed: Tree should be empty after reset");
+
     //DevOps extra tests for 10 total
 
     // Tree printing tests
