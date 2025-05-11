@@ -10,6 +10,54 @@ void assert(bool condition, const std::string &message)
     }
 }
 
+void test_tree_print() {
+    Tree tree;
+    tree.reset();
+
+    {
+        std::ostringstream output;
+        tree.print(output);
+        assert(output.str() == "", 
+               "Print Test 1 Failed: Empty tree should print nothing");
+    }
+
+    {
+        RiverNode *river = new RiverNode();
+        river->name = "Mississippi";
+        river->length = 3730;
+        tree.insert(nullptr, river, true);
+
+        std::ostringstream output;
+        tree.print(output);
+        assert(output.str() == "Mississippi (3730 km) \n\n", "Print Test 2 Failed: Single river output mismatch");
+    }
+
+    {
+        tree.reset();
+        RiverNode *river = new RiverNode();
+        river->name = "Danube";
+        river->length = 2850;
+        tree.insert(nullptr, river, true);
+
+        DamNode *dam = new DamNode();
+        dam->name = "Iron Gates Dam";
+        dam->height = 34;
+        tree.insert(river, dam, true);
+
+        LakeNode *lake = new LakeNode();
+        lake->name = "Black Sea";
+        lake->area = 436402;
+        tree.insert(river, lake, false);
+
+        std::ostringstream output;
+        tree.print(output);
+        std::string expected = 
+            "Danube (2850 km) \n"
+            "Iron Gates Dam (34 m, 0 MW) Black Sea (436402 km^2) \n\n";
+        assert(output.str() == expected, "Print Test 3 Failed: Complex tree output mismatch");
+    }
+}
+
 int main()
 {
     Tree tree;
@@ -105,52 +153,4 @@ int main()
     std::cout << "All tests passed." << std::endl;
 
     return 0;
-}
-
-void test_tree_print() {
-    Tree tree;
-    tree.reset();
-
-    {
-        std::ostringstream output;
-        tree.print(output);
-        assert(output.str() == "", 
-               "Print Test 1 Failed: Empty tree should print nothing");
-    }
-
-    {
-        RiverNode *river = new RiverNode();
-        river->name = "Mississippi";
-        river->length = 3730;
-        tree.insert(nullptr, river, true);
-
-        std::ostringstream output;
-        tree.print(output);
-        assert(output.str() == "Mississippi (3730 km) \n\n", "Print Test 2 Failed: Single river output mismatch");
-    }
-
-    {
-        tree.reset();
-        RiverNode *river = new RiverNode();
-        river->name = "Danube";
-        river->length = 2850;
-        tree.insert(nullptr, river, true);
-
-        DamNode *dam = new DamNode();
-        dam->name = "Iron Gates Dam";
-        dam->height = 34;
-        tree.insert(river, dam, true);
-
-        LakeNode *lake = new LakeNode();
-        lake->name = "Black Sea";
-        lake->area = 436402;
-        tree.insert(river, lake, false);
-
-        std::ostringstream output;
-        tree.print(output);
-        std::string expected = 
-            "Danube (2850 km) \n"
-            "Iron Gates Dam (34 m, 0 MW) Black Sea (436402 km^2) \n\n";
-        assert(output.str() == expected, "Print Test 3 Failed: Complex tree output mismatch");
-    }
 }
