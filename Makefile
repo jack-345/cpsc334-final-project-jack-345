@@ -7,3 +7,6 @@ run:
 test:
 	g++ tests.cpp rivers.cpp -o tests
 	./tests
+
+pack:
+	dpkg-deb --build river-pkg river-pkg.deb

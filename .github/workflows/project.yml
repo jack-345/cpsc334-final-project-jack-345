@@ -45,11 +45,11 @@ jobs:
             - name: checkout code
               uses: actions/checkout@v4
 
-            - name: build
-              run: make build
+            - name: pack
+              run: make pack
 
             - name: upload artifact
               uses: actions/upload-artifact@v4
               with:
                 name: rivers-pkg
-                path: river-pkg.deb
+                path: ./rivers-pkg.deb
