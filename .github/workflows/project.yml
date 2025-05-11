@@ -34,6 +34,9 @@ jobs:
             - name: checkout code
               uses: actions/checkout@v4
 
+            - name: build
+              run: make build
+
             - name: tidy up
               run: |
                 clang-tidy main.cpp -- -std=c++17
