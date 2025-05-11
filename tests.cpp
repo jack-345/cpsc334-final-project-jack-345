@@ -88,7 +88,23 @@ int main()
     }
 
     //DevOps extra tests for 10 total
+    RiverNode *river2 = new RiverNode();
+    river2->name = "Test River 2";
+    river2->length = 200;
+    tree.insert(lake, river2, true);
+    assert(lake->left == river2, "Lake's left child should be river2");
 
+    DamNode *dam2 = new DamNode();
+    dam2->name = "Test Dam 2";
+    dam2->height = 60;
+    tree.insert(lake, dam2, false);
+    assert(lake->right == dam2, "Lake's right child should be dam2");
+
+    LakeNode *lake2 = new LakeNode();
+    lake2->name = "Test Lake 2";
+    lake2->area = 300;
+    tree.insert(dam, lake2, true);
+    assert(dam->left == lake2, "Dam's left child should be lake2");
     //DevOps extra tests for 10 total
 
     // Tree printing tests
