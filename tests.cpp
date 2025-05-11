@@ -88,8 +88,13 @@ int main()
     }
 
     //DevOps extra tests for 10 total
-    tree.reset();
-    assert(tree.getRoot() == nullptr, "Test 8 Failed: Tree should be empty after reset");
+    Tree freshTree;  // Use a fresh tree instance for reset test
+    RiverNode *testRoot = new RiverNode();
+    testRoot->name = "Test Root";
+    testRoot->length = 1;
+    freshTree.insert(nullptr, testRoot, true);
+    freshTree.reset();
+    assert(freshTree.getRoot() == nullptr, "Test 8 Failed: Tree should be empty after reset");
 
     RiverNode *tributary = new RiverNode();
     tributary->name = "Tributary";
