@@ -6,6 +6,5 @@ run:
 	./rivers
 
 test:
-	make clean
 	g++ tests.cpp rivers.cpp -o tests
 	./tests
