@@ -1,11 +1,9 @@
-all:
+build:
 	make clean
 	g++ main.cpp rivers.cpp -o rivers
-	./rivers
 
-clean:
-	rm -f rivers
-	rm -f tests
+run:
+	./rivers
 
 test:
 	make clean
